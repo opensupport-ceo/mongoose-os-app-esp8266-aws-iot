@@ -15,13 +15,27 @@
  * limitations under the License.
  */
 
-#include "topfeature.h"
 #include "mgos.h"
 #include "mgos_mqtt.h"
 #include "mgos_dht.h"
-#include "hwiodef.h"
- 
-#ifndef USE_JS_AWS_TEST
+
+#define USE_DHT
+//#undef USE_DHT
+
+#define ESP8266_LED_PIN 2 //attached to ESP8266XX module inside NodeMCU. 
+#define NODEMCU_LED_PIN 16 // attached to NodeMCU DevKit.
+#define LED_ALIVE_PIN ESP8266_LED_PIN
+#define LED_REPORT_PIN NODEMCU_LED_PIN
+#define LED_CONNECT_PIN LED_ALIVE_PIN
+
+#if (0)
+#define BUTTON_RST  16 // reset button.
+#define BUTTON_USER BUTTON_RST
+#endif
+
+#define BUTTON_FLASH  0 // flash Button.
+#define BUTTON_PIN  BUTTON_FLASH 
+
 #if defined(USE_DHT)
 static struct mgos_dht *s_dht = NULL;
 #endif
@@ -130,13 +144,7 @@ static void button_cb(int pin, void *arg) {
   report_temperature(NULL);
   (void) arg;
 }
-#endif//#ifndef USE_JS_AWS_TEST
 
-#ifdef USE_JS_AWS_TEST
-enum mgos_app_init_result mgos_app_init(void) {
-  return MGOS_APP_INIT_SUCCESS;
-}
-#else
 enum mgos_app_init_result mgos_app_init(void) {
 
 #ifndef LED_CONECT_PIN
@@ -171,4 +179,4 @@ enum mgos_app_init_result mgos_app_init(void) {
 
   return MGOS_APP_INIT_SUCCESS;
 }
-#endif//!USE_JS_AWS
+
