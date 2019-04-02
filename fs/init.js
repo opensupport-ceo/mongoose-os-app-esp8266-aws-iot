@@ -1,11 +1,11 @@
-/* when USE_JS_AWS_TEST enabled in topfeature.h
+
 
 load('api_config.js');
 load('api_mqtt.js');
 load('api_sys.js');
 load('api_timer.js');
 
-
+/* when USE_JS_AWS_TEST enabled in topfeature.h
 let topic = 'metrics/' + Cfg.get('device.id');
 print('topic: ', topic);
 

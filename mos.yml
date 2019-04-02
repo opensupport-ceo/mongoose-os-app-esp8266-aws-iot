@@ -33,7 +33,13 @@ filesystem:
 #  - ["my_app.int_value", "i", 123, {title: "Some integer value"}]
 
 config_schema:
-  - ["device.id", "s", "esp8266", {title: "Some string value"}]
+  - ["mqtt.pub", "s", "/response", {title: "Publish topic"}]
+  - ["mqtt.sub", "s", "/request", {title: "Subscribe topic"}]
+  - ["mqtt.server", "broker.mqttdashboard.com:1883"]
+  - ["device.id", "esp8266"]
+  - ["device.password", "test"]
+  - ["i2c.enable", true]
+
  
 # These settings get compiled into the C structure, and can be accessed
 # from the C code this way:
@@ -77,10 +83,31 @@ libs:
  - origin: https://github.com/mongoose-os-libs/sntp
  - origin: https://github.com/mongoose-os-libs/wifi
  - origin: https://github.com/mongoose-os-libs/dht
+ - origin: https://github.com/mongoose-os-libs/atca
+ - origin: https://github.com/mongoose-os-libs/dns-sd
+ - origin: https://github.com/mongoose-os-libs/rpc-service-atca
 
 build_vars:
   MGOS_ROOT_FS_SIZE: 196608 # 192KB=0x30000,128KB=0x20000(131072), default is 256KB=0x40000(262144)
   APP_SLOT_SIZE: 0x190000   # 1536KB+64KB, 1536KB+128KB(0x1a0000), defualt is 1537KB=0x180000
+  SSL: mbedTLS
+
+###
+### aws referals: links for setting-up aws-configurations
+###
+#aws-guide: https://aws.amazon.com/ko/blogs/apn/aws-iot-on-mongoose-os-part-1/
+#aws-region code: https://docs.aws.amazon.com/ko_kr/general/latest/gr/rande.html
+#aws-cli install: https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-chap-install.html
+#aws-cli configure: https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-chap-configure.html#cli-quick-configuration-region
+#aws-console-IAM-user pub: publish /requset using format below json format on mqtt test menu.
+#{
+#    gpio: {
+#        pin: 2, //or 16
+#        state: 0
+#    }
+#}
+#// pin: 2(built-in ESP8266XX LED) or 16(built-in NodeMCU LED)
+#aws-console-IAM-user sub: subcribe /response on aws console
 
 # Used by the mos tool to catch mos binaries incompatible with this file format
 manifest_version: 2017-09-29

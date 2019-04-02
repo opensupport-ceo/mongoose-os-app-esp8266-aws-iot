@@ -11,6 +11,8 @@ platform: esp8266
 # Optional. List of tags for online search.
 tags:
   - c
+  - js
+  - c++
 
 # List of files / directories with C sources. No slashes at the end of dir names.
 sources:
