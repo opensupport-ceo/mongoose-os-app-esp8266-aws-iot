@@ -1,4 +1,10 @@
-
+/*
+ * Copyright (c) 2014-2019 OWL Software Limited
+ * All rights reserved
+ * 
+ * Author: Jaehong Park, jaehong1972@gmail.com
+ *
+ */
 
 load('api_config.js');
 load('api_mqtt.js');

@@ -2,8 +2,8 @@
 
 ## Overview
 
-This is an app, serves for building Mongoose OS
-apps connecting AWS IoT Core using mqtt prtocol.
+This is an sample app, and serves for building Mongoose OS
+apps connecting to AWS IoT Core using mqtt protocol.
 
 ## Guide
 

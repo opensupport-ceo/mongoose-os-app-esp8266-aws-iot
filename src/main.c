@@ -1,7 +1,11 @@
 /*
- * Copyright (c) 2014-2018 OWL Software Limited
+ * Copyright (c) 2014-2019 OWL Software Limited
  * All rights reserved
+ * 
+ * Author: Jaehong Park, jaehong1972@gmail.com
  *
+ * Description: Sample connected to AWS IoT Cloud via Mqtt. 
+ * 
  * Licensed under the Apache License, Version 2.0 (the ""License"");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
